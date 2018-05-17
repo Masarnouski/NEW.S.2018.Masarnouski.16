@@ -1,25 +1,30 @@
 ﻿using BLL;
 using DAL;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
+using DependencyResolver;
+using BLL.Interfaces.Interfaces;
+using DAL.Interfaces.Interfaces;
 
 namespace ConsolePL
 {
     class Program
     {
+        private static readonly IKernel resolver;
+
+        static Program()
+        {
+            resolver = new StandardKernel();
+            resolver.ConfigurateResolver();
+        }
+
         static void Main(string[] args)
         {
-            FileReader reader = new FileReader("file.txt");
-            NLogger logger = new NLogger(typeof(UrlConverter));
-            UrlConverter converter = new UrlConverter(logger);
-            List<Uri> urilist = converter.GetUri(reader).ToList();
-            Console.ReadLine();
-            XmlConverter xmlConverter = new XmlConverter();
-            XDocument document = xmlConverter.GetXMLDocument(converter, reader);
+            IXmlConverter xmlConverter = resolver.Get<IXmlConverter>();
+            XDocument document = xmlConverter.GetXMLDocument(resolver.Get<IUrlConverter>(), resolver.Get<IFileReader>());
             document.Save("XML_result.xml");
         }
     }

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Interfaces", "DAL.Inter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePL", "ConsolePL\ConsolePL.csproj", "{FF74390D-2055-4AB0-9CA5-B388C3756457}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyResolver", "DependencyResolver\DependencyResolver.csproj", "{8DE648D3-7D80-4F80-9BCD-6359F0F386D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FF74390D-2055-4AB0-9CA5-B388C3756457}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF74390D-2055-4AB0-9CA5-B388C3756457}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF74390D-2055-4AB0-9CA5-B388C3756457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE648D3-7D80-4F80-9BCD-6359F0F386D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE648D3-7D80-4F80-9BCD-6359F0F386D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE648D3-7D80-4F80-9BCD-6359F0F386D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE648D3-7D80-4F80-9BCD-6359F0F386D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
