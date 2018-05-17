@@ -8,7 +8,7 @@ namespace BLL
 {
     public class UrlConverter:IUrlConverter
     {
-        private ILogger _logger;
+        private ILogger logger;
 
         public UrlConverter(ILogger logger)
         {
@@ -24,7 +24,7 @@ namespace BLL
                     throw new ArgumentNullException(nameof(Logger));
                 }
 
-                _logger = value;
+                logger = value;
             }
         }
 
@@ -51,13 +51,22 @@ namespace BLL
             string htmlRegexPattern = @"(^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$)*";
 
 
-            if (urlAddress == null)
-                throw new ArgumentNullException("data is null");
+            if (String.IsNullOrEmpty(urlAddress))
+            {
+
+                logger.Warn(new ArgumentNullException($"URL is null or empty:{nameof(urlAddress)}"), "URL is null or empty");
+            }
 
             if (Regex.IsMatch(urlAddress, htmlRegexPattern))
+            {
+                logger.Info($"URL {nameof(urlAddress)} has matched");
                 return true;
+            }
             else
+            {
+                logger.Warn(new ArgumentNullException($"Incoorect URL:{nameof(urlAddress)}"), "Incoorect URL");
                 return false;
+            }
 
         }
     }
